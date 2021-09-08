@@ -28,6 +28,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginRight: -12,
   },
+  actionBtn: {
+    '&:hover': {
+      color: 'inherit',
+    },
+  },
 }));
 
 function Header() {
@@ -44,19 +49,19 @@ function Header() {
 
           <section className={classes.rightToolbar}>
             <Tooltip title='Add'>
-              <IconButton color='inherit' title='Add'>
+              <IconButton title='Add' className={classes.actionBtn}>
                 <AddCircleIcon />
               </IconButton>
             </Tooltip>
 
             <Tooltip title='Delete'>
-              <IconButton color='inherit' aria-label='delete'>
+              <IconButton aria-label='delete' className={classes.actionBtn}>
                 <DeleteIcon />
               </IconButton>
             </Tooltip>
 
             <Tooltip title='Edit'>
-              <IconButton color='inherit' aria-label='edit'>
+              <IconButton aria-label='edit' className={classes.actionBtn}>
                 <EditIcon />
               </IconButton>
             </Tooltip>
