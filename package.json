@@ -22,7 +22,14 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "filepond": "^4.29.0",
+    "filepond-plugin-file-encode": "^2.1.10",
+    "gridfs-stream": "^1.1.1",
+    "i": "^0.3.6",
+    "method-override": "^3.0.0",
     "mongoose": "^6.0.5",
-    "nodemon": "^2.0.12"
+    "multer-gridfs-storage": "^5.0.1",
+    "nodemon": "^2.0.12",
+    "react-filepond": "^7.1.1"
   }
 }

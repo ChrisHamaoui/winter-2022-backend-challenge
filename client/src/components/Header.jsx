@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FilePond, registerPlugin } from 'react-filepond';
+import 'filepond/dist/filepond.min.css';
+import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
 
 // material-ui imports
 import { makeStyles } from '@material-ui/core/styles';
@@ -37,6 +40,10 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   const classes = useStyles();
+  const [files, setFiles] = useState([]);
+
+  // Register the plugin
+  registerPlugin(FilePondPluginFileEncode);
 
   return (
     <div>
@@ -48,20 +55,41 @@ function Header() {
           </Typography>
 
           <section className={classes.rightToolbar}>
+            {/* ADD image(s) button */}
             <Tooltip title='Add'>
-              <IconButton title='Add' className={classes.actionBtn}>
+              <IconButton className={classes.actionBtn} component='label'>
+                <FilePond
+                  files={files}
+                  onupdatefiles={setFiles}
+                  allowMultiple={true}
+                  name='files'
+                  stylePanelLayout='circle'
+                  dropOnPage={true}
+                  onaddfile={(err, file) => {
+                    // TODO -> Add image src to MongoDB and render it
+                    console.log(file.getFileEncodeDataURL());
+                  }}
+                  allowFileEncode={true}
+                />
                 <AddCircleIcon />
               </IconButton>
             </Tooltip>
 
+            {/* DELETE image(s) button */}
             <Tooltip title='Delete'>
-              <IconButton aria-label='delete' className={classes.actionBtn}>
+              <IconButton
+                className={classes.actionBtn}
+                // onClick={() => {
+                //   files.map((file) => console.log(file.getFileEncodeDataURL()));
+                // }}
+              >
                 <DeleteIcon />
               </IconButton>
             </Tooltip>
 
+            {/* EDIT image(s) button */}
             <Tooltip title='Edit'>
-              <IconButton aria-label='edit' className={classes.actionBtn}>
+              <IconButton className={classes.actionBtn}>
                 <EditIcon />
               </IconButton>
             </Tooltip>
