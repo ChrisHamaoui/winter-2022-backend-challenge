@@ -5,6 +5,7 @@ import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
 
 // material-ui imports
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -14,6 +15,7 @@ import ImageAspectRatioIcon from '@material-ui/icons/ImageAspectRatio';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import EditIcon from '@material-ui/icons/Edit';
+import ImageGallery from './ImageGallery';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -35,6 +37,11 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       color: 'inherit',
     },
+  },
+  imageGrid: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
   },
 }));
 
@@ -77,12 +84,7 @@ function Header() {
 
             {/* DELETE image(s) button */}
             <Tooltip title='Delete'>
-              <IconButton
-                className={classes.actionBtn}
-                // onClick={() => {
-                //   files.map((file) => console.log(file.getFileEncodeDataURL()));
-                // }}
-              >
+              <IconButton className={classes.actionBtn}>
                 <DeleteIcon />
               </IconButton>
             </Tooltip>
@@ -96,6 +98,18 @@ function Header() {
           </section>
         </Toolbar>
       </AppBar>
+
+      {/* <Grid container className={classes.imageGrid}>
+        {files.map((file) => {
+          return (
+            <ImageGallery
+              imageSrc={file.getFileEncodeDataURL()}
+              alt={file.filename}
+              key={file.id}
+            />
+          );
+        })}
+      </Grid> */}
     </div>
   );
 }

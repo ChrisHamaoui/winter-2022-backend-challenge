@@ -30,6 +30,13 @@ mongoose
   )
   .catch((error) => console.log(error.message));
 
+// export function saveFile(file) {
+//   const image = {
+//     name: file.filename(),
+//     src: file.getFileEncodeDataURL(),
+//   }.save();
+// }
+
 // Server static assets if in production (Heroku)
 // if (process.env.NODE_ENV === 'production') {
 //   app.use(express.static('client/build'));
